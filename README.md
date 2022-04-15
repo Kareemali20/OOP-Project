@@ -1,5 +1,5 @@
 # OOP-Project
-This repository is for adding all the files that is concerned about the project and for the team to add their information 
+This repository is for adding all the files that is concerned about the project and for the team to add their work 
 
 
 Diagrams :
