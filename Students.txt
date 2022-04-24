@@ -1,4 +1,0 @@
-ID~Age~Name~Class~Section
-0~Ahmed sam~1~1~1
-0~Ahmed smaya~1~1~1
-0~Ahmed same~1~1~1
