@@ -1,0 +1,6 @@
+1~Kareem Abdelkhalek~19~2~College~3.7
+2~Mohamed Ibrahim~20~2~College~3.1
+3~Ahmed Tharwat~20~2~College~3.0
+4~Ammar Mahmoud~21~3~College~2.4
+5~Ahmed Maher~21~3~College~3.3
+6~Ahmed Abdelkhalek~9~Middle~0.0
