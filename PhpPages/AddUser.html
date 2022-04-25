@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
     <style>
-        .UserForm{
-            margin-left: auto;
-            margin-right: auto;
+        .Form{
+            border: 3px solid darkblue;
+            padding: 10px;
+            padding-left: 45%;
         }
     </style>
     
@@ -15,7 +16,9 @@
 </head>
 <body>
     
-<form method="post" class="UserForm" action="AddUser.php">
+
+    <div class="Form">
+        <form method="post" class="UserForm" action="AddUser.php">
             <label for="Name">Full Name </label><br>
             <input type="text" id="Name" name ="Name"><br>
 
@@ -36,6 +39,8 @@
             <br>
 
         </form>
+
+    </div>
 
 </body>
 </html>
