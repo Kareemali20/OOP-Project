@@ -81,10 +81,31 @@ class FileManager{
         fclose($File);
     }
 
+    public function DeleteRecordInFile($Record){
+        $FileIntoString = file_get_contents($this->FileName);
+        $FileIntoString = str_replace($Record."\r\n"," ",$FileIntoString);
+        file_put_contents($this->FileName,$FileIntoString);
+    }
+
     public function GetLineWithId($Id){
         $File = fopen($this->FileName,"r+") or die ("File Not Found");
         
+
+        while(!feof($File)){
+
+            $CurrentLine = fgets($File);
+            $LineArray = explode($this->Seperator,$CurrentLine);
+            if($LineArray[0]==$Id){
+                return $CurrentLine;
+            }
+              
+        }
+
+        fclose($File);
+        return 0;
     }
 
 
 }
+
+

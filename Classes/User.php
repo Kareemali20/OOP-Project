@@ -1,4 +1,5 @@
 <?php
+require 'FileManager.php';
 
 class User{
     private $ID;
@@ -9,7 +10,6 @@ class User{
     public $FileManager;
 
     public function __construct(string $FileName,string $Seperator){
-        require 'FileManager.php';
         $this->FileManager = new FileManager($FileName,$Seperator);
         
     }
@@ -76,27 +76,33 @@ class User{
     }
 
     // Functions
-    public function ListAllUsers(){
-        $UsersArray = [];
-        $index = 0;
-        $File = fopen($this->FileManager->getFileName(),"r+") or die("File Not Found !");
-        while(!feof($File)){
-            $CurrentLine = fgets($File);
-            $LineArray = explode($this->FileManager->getSeperator(),$CurrentLine);
-            //$UsersArray[$i] = 
-        }
-    }
 
     public function GetUserById($Id){
         $IdUser;
         $File = fopen($this->FileManager->getFileName(),"r+") or die("File Not Found !");
+
         while(!feof($File)){
             $CurrentLine = fgets($File);
+            
             $LineArray = explode($this->FileManager->getSeperator(),$CurrentLine);
+            
             if($LineArray[0] == $Id){
+                $F = new FileManager("../TextFiles/Users.txt","~");
+                $Line = $F->GetLineWithId($Id);
+        
+                $IdUser = new User("../TextFiles/Users.txt","~");
                 
+                $IdUser->ID =$LineArray[0];
+                $IdUser->Name = $LineArray[1];
+                $IdUser->Email = $LineArray[2];
+                $IdUser->Password = $LineArray[3];
+                $IdUser->Age = $LineArray[4];
+
+                return $IdUser;
             }
+
         }
+        return 0;
     }
 
     public function StoreUser(){
@@ -106,6 +112,11 @@ class User{
         $this->Password.$this->FileManager->getSeperator().$this->Age;
         $this->FileManager->StoreRecordInFile($User);
         echo $User;
+    }
+
+    public function DeleteUser($Id){
+        $UserLine = $this->FileManager->GetLineWithId($Id);
+        $this->FileManager->DeleteRecordInFile($UserLine);
     }
 
 }
