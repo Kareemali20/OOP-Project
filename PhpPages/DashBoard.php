@@ -3,14 +3,25 @@
     <style>
 
         table,th,td{
+            font-family: arial;
             border: 1px solid;
+            text-align: center;
             padding: 5px;
         }
 
         .center {
         margin-left: auto;
         margin-right: auto;
-        border: 3px solid;
+        border: 4px solid darkblue;
+        border-radius: 5px;
+        border-style: inset;
+
+        }
+        
+        .center2{
+        margin-left: auto;
+        margin-right: auto;
+        display: flex;
         }
 
         .UserForm{
@@ -21,7 +32,9 @@
         a{
             margin:10px;
         }
-
+        body{
+            background-color:rgb(201, 225, 247);
+        }
     </style>
 
 <head>
@@ -32,22 +45,27 @@
 </head>
 <body>
 
-   <table class="center">
-
+<div class ="center2">
+<table class="center">
+    
     <?php 
     include '../Classes/User.php';
-    //include '../Classes/Student.php';
     $User1 = new User("../TextFiles/Users.txt","~");
+    
     $User1->FileManager->DrawTableFromFile();
     ?>
     
-    <tr>
+    
             <td>
                 <a href="AddUser.html">Add User</a>
             </td>
-        </tr>
+
+    
+    
 
    </table>
+</div>
+  
     <?php
     ?>
 

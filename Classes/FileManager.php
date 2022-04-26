@@ -60,7 +60,7 @@ class FileManager{
 
     public function DrawTableFromFile(){
         $File = fopen($this->FileName,"r+") or die ("File Not Found");
-        
+        $bool = FALSE;
         while(!feof($File)){
 
             $CurrentLine = fgets($File);
@@ -69,9 +69,14 @@ class FileManager{
             for($i=0;$i<count($LineArray);$i++){
                 echo "<td>".$LineArray[$i]." </td>";
             }
+            if($bool == TRUE){
+                echo "<td><a href = ../PhpPages/DeleteUser.php>Delete</a></td>";
+            }
+            $bool = TRUE;
             echo "</tr>";
               
         }
+
         fclose($File);
     }
 
@@ -83,7 +88,7 @@ class FileManager{
 
     public function DeleteRecordInFile($Record){
         $FileIntoString = file_get_contents($this->FileName);
-        $FileIntoString = str_replace($Record."\r\n"," ",$FileIntoString);
+        $FileIntoString = str_replace($Record," ",$FileIntoString);
         file_put_contents($this->FileName,$FileIntoString);
     }
 

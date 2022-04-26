@@ -105,6 +105,10 @@ class User{
         return 0;
     }
 
+    public function ListAllUsers(){
+        
+    }
+
     public function StoreUser(){
         $Id = $this->FileManager->getLastId()+1;
         $User = $Id.$this->FileManager->getSeperator().$this->Name.$this->FileManager->getSeperator().
@@ -120,4 +124,3 @@ class User{
     }
 
 }
-
