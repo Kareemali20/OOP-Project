@@ -15,14 +15,13 @@
         border: 4px solid darkblue;
         border-radius: 5px;
         border-style: inset;
+        }
 
+        h1{
+            text-align:center;
+            font-family:arial;
         }
         
-        .center2{
-        margin-left: auto;
-        margin-right: auto;
-        display: flex;
-        }
 
         .UserForm{
             margin:10px;
@@ -45,29 +44,39 @@
 </head>
 <body>
 
-<div class ="center2">
-<table class="center">
+    <h1>List All Users</h1>
+
+    <table class="center">
     
     <?php 
     include '../Classes/User.php';
     $User1 = new User("../TextFiles/Users.txt","~");
+    $User2 = $User1->ListAllUsers();
     
-    $User1->FileManager->DrawTableFromFile();
+
+    for($i=0;$i<count($User2);$i++){
+        echo "<tr>"; 
+            echo "<td>".$User2[$i]->getId()."</td>";
+            echo "<td>".$User2[$i]->getName()."</td>";
+            echo "<td>".$User2[$i]->getEmail()."</td>";
+            echo "<td>".$User2[$i]->getPassword()."</td>";
+            echo "<td>".$User2[$i]->getAge()."</td>";
+            if($i!=0){
+                echo "<td> <a href = DeleteUser.php?Id=".$User2[$i]->getID()."> Delete </a>  </td>";
+                echo "<td> <a href = UpdateUser.php?Id=".$User2[$i]->getID()."> Update </a> </td>";
+            }
+        echo "</tr>";
+    }
     ?>
     
     
-            <td>
-                <a href="AddUser.html">Add User</a>
-            </td>
-
-    
-    
+    <td>
+    <a href="AddUser.html">Add User</a>
+    </td>
 
    </table>
-</div>
-  
-    <?php
-    ?>
+
+
 
 </body>
 </html>

@@ -44,6 +44,10 @@ class Student extends User {
         return $this->GPA;
     }
 
+    public function getNumberOfAttributes(){
+        return 9;
+    }
+
     public function AddCourse($Name,$Hours){
         $Course = new Courses($Name,$Hours);
         // for($i=0;$i<$count($Courses);$i++){

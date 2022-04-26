@@ -58,22 +58,25 @@ class FileManager{
         return $LastId;
     }
 
+
+    // Not Going to use this function
     public function DrawTableFromFile(){
         $File = fopen($this->FileName,"r+") or die ("File Not Found");
-        $bool = FALSE;
+        
         while(!feof($File)){
 
             $CurrentLine = fgets($File);
             echo "<tr>";
             $LineArray = explode($this->Seperator,$CurrentLine);
+            
             for($i=0;$i<count($LineArray);$i++){
                 echo "<td>".$LineArray[$i]." </td>";
+                
             }
-            if($bool == TRUE){
-                echo "<td><a href = ../PhpPages/DeleteUser.php>Delete</a></td>";
-            }
-            $bool = TRUE;
+            
             echo "</tr>";
+
+
               
         }
 
@@ -88,7 +91,13 @@ class FileManager{
 
     public function DeleteRecordInFile($Record){
         $FileIntoString = file_get_contents($this->FileName);
-        $FileIntoString = str_replace($Record," ",$FileIntoString);
+        $FileIntoString = str_replace($Record,"",$FileIntoString);
+        file_put_contents($this->FileName,$FileIntoString);
+    }
+
+    public function UpdateRecordInFile($NewRecord,$OldRecord){
+        $FileIntoString = file_get_contents($this->FileName);
+        $FileIntoString = str_replace($OldRecord,$NewRecord,$FileIntoString);
         file_put_contents($this->FileName,$FileIntoString);
     }
 

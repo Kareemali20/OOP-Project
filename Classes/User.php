@@ -75,6 +75,10 @@ class User{
         $this->Email = $Email;
     }
 
+    public function getNumberOfAttributes(){
+        return 5;
+    }
+
     // Functions
 
     public function GetUserById($Id){
@@ -102,11 +106,27 @@ class User{
             }
 
         }
+        fclose($File);
+
         return 0;
     }
 
     public function ListAllUsers(){
-        
+        $UsersArray = array();
+        $File = fopen($this->FileManager->getFileName(),"r+") or die("File Not Found !");
+        $i = 0;
+        while(!feof($File)){
+
+            $CurrentLine = fgets($File);
+            $LineArray = explode($this->FileManager->getSeperator(),$CurrentLine);
+            $UsersArray[$i] = new User("../TextFiles/Users.txt","~");
+            $UsersArray[$i] = $this->GetUserById($LineArray[0]);
+            
+
+            $i++;
+        }
+        fclose($File);
+        return $UsersArray;
     }
 
     public function StoreUser(){
