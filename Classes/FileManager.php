@@ -63,6 +63,7 @@ class FileManager{
     public function DrawTableFromFile(){
         $File = fopen($this->FileName,"r+") or die ("File Not Found");
         
+        echo "<table>";
         while(!feof($File)){
 
             $CurrentLine = fgets($File);
@@ -79,6 +80,7 @@ class FileManager{
 
               
         }
+        echo "</table>";
 
         fclose($File);
     }

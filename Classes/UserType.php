@@ -1,35 +1,24 @@
 <?php
 require 'FileManager.php';
 
-class User{
+class UserType{
     private $ID;
     private $Name;
-    private $Email;
-    private $Password;
-    private $Age;
-    private $FileManager;
+    private $UserType;
+    public $FileManager;
 
     public function __construct(string $FileName,string $Seperator){
         $this->FileManager = new FileManager($FileName,$Seperator);
-        
-    }
-
-    // Setters And Getters
-    public function setID($ID)
-    {
-        $this->ID = $ID;
-
     }
 
     public function getID()
     {
         return $this->ID;
-    }
+    } 
 
-    public function setName($Name)
+    public function setID($ID)
     {
-        $this->Name = $Name;
-
+        $this->ID = $ID;
     }
 
     public function getName()
@@ -37,51 +26,34 @@ class User{
         return $this->Name;
     }
 
-    public function setAge($Age)
-    {
-        $this->Age = $Age;
-
-    }
-
-    public function getAge()
-    {
-        return $this->Age;
-    }
-
-
-   
-
-   
-    public function getPassword()
-    {
-        return $this->Password;
-    }
-
   
-    public function setPassword($Password)
+    public function setName($Name)
     {
-        $this->Password = $Password;
+        $this->Name = $Name;
 
     }
 
-    public function getEmail()
+    public function getUserType()
     {
-        return $this->Email;
+        return $this->UserType;
     }
 
 
-    public function setEmail($Email)
+    public function setUserType($UserType)
     {
-        $this->Email = $Email;
+        $this->UserType = $UserType;
     }
+
 
     public function getNumberOfAttributes(){
-        return 5;
+        return 3;
     }
 
-    // Functions
 
-    public function GetUserById($Id){
+
+
+
+    public function GetUserWithHisType($Id){
         $IdUser;
         $File = fopen($this->FileManager->getFileName(),"r+") or die("File Not Found !");
 
@@ -91,16 +63,14 @@ class User{
             $LineArray = explode($this->FileManager->getSeperator(),$CurrentLine);
             
             if($LineArray[0] == $Id){
-                $F = new FileManager("../TextFiles/Users.txt","~");
+                $F = new FileManager("../TextFiles/Usertype.txt","~");
                 $Line = $F->GetLineWithId($Id);
         
-                $IdUser = new User("../TextFiles/Users.txt","~");
+                $IdUser = new User("../TextFiles/Usertype.txt","~");
                 
                 $IdUser->ID =$LineArray[0];
                 $IdUser->Name = $LineArray[1];
-                $IdUser->Email = $LineArray[2];
-                $IdUser->Password = $LineArray[3];
-                $IdUser->Age = $LineArray[4];
+                $IdUser->UserType = $LineArray[2];
 
                 return $IdUser;
             }
@@ -119,8 +89,8 @@ class User{
 
             $CurrentLine = fgets($File);
             $LineArray = explode($this->FileManager->getSeperator(),$CurrentLine);
-            $UsersArray[$i] = new User("../TextFiles/Users.txt","~");
-            $UsersArray[$i] = $this->GetUserById($LineArray[0]);
+            $UsersArray[$i] = new User("../TextFiles/Usertype.txt","~");
+            $UsersArray[$i] = $this->GetUserWithHisType($LineArray[0]);
             
 
             $i++;
@@ -132,8 +102,7 @@ class User{
     public function StoreUser(){
         $Id = $this->FileManager->getLastId()+1;
         $User = $Id.$this->FileManager->getSeperator().$this->Name.$this->FileManager->getSeperator().
-        $this->Email.$this->FileManager->getSeperator().
-        $this->Password.$this->FileManager->getSeperator().$this->Age;
+        $this->UserType;
         $this->FileManager->StoreRecordInFile($User);
         echo $User;
     }
@@ -143,4 +112,10 @@ class User{
         $this->FileManager->DeleteRecordInFile($UserLine);
     }
 
+
+
 }
+$UserType = new UserType("../TextFiles/Usertype.txt","~");
+$UserType->FileManager->DrawTableFromFile();
+
+?>
