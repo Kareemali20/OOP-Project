@@ -76,9 +76,6 @@ class FileManager{
             }
             
             echo "</tr>";
-
-
-              
         }
         echo "</table>";
 

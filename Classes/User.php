@@ -7,11 +7,10 @@ class User{
     private $Email;
     private $Password;
     private $Age;
-    private $FileManager;
+    public $FileManager;
 
     public function __construct(string $FileName,string $Seperator){
         $this->FileManager = new FileManager($FileName,$Seperator);
-        
     }
 
     // Setters And Getters
@@ -143,4 +142,9 @@ class User{
         $this->FileManager->DeleteRecordInFile($UserLine);
     }
 
+    public function UpdateUser($OldRecord,$NewRecord){
+        $this->FileManager->UpdateRecordInFile($NewRecord,$OldRecord);
+    }
+
 }
+

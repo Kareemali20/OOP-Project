@@ -50,9 +50,15 @@
             <br>
             <br>
 
+            <?php
+                session_start();
+                $_SESSION['Id'] = $_GET["Id"];
+            ?>
+        
+
         </form>
     
-    
+       
 
 </div>
 
