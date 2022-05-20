@@ -4,15 +4,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../View Pages/UpdateUser.css">
-    
+    <link rel="stylesheet" href="AddUser.css">
     <title>Document</title>
 </head>
 <body>
 
-<div class="center">
-        <h1> Update User </h1>
-        <form action="UpdateUser2.php" method="post" >
+    <div class="center">
+        <h1> Add User </h1>
+        <form action="../PhpPages/AddUser.php" method="post" >
             <div class="text_field">
                 <input type="text" id="Name"
                 name="Name" required>
@@ -45,16 +44,9 @@
                 <label> Age </label>
             </div>
             
-            <input type="submit" value="Update Information">
+            <input type="submit" value="Add User">
             
-            <?php
-                session_start();
-                $_SESSION['Id'] = $_GET["Id"];
-            ?>
-
         </form>
     </div>    
-
-    
 </body>
 </html>
