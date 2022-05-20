@@ -9,5 +9,5 @@ $UserObj->setAge($_REQUEST['Age']);
 
 $UserObj->StoreUser();
 
-header("location:DashBoard.php");
+header("location:index.php");
 ?>

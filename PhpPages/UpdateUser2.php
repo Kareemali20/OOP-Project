@@ -15,5 +15,5 @@ $NewRecord = $_SESSION['Id']."~".$_SESSION['Name']."~".$_SESSION['Email']."~".$_
 
 $UserObj->UpdateUser($OldRecord,$NewRecord);
 
-header("location:DashBoard.php");
+header("location:index.php");
 ?>

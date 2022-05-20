@@ -47,7 +47,6 @@
     <h1>List All Users</h1>
 
     <table class="center">
-    
     <?php 
     include '../Classes/User.php';
     $User1 = new User("../TextFiles/Users.txt","~");

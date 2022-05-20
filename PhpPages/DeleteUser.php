@@ -4,5 +4,5 @@ $UserObj = new User("../TextFiles/Users.txt","~");
 $UserObj->DeleteUser($_GET["Id"]);
 
 
-header("location:DashBoard.php");
+header("location:index.php");
 ?>
