@@ -47,10 +47,6 @@ class User{
         return $this->Age;
     }
 
-
-   
-
-   
     public function getPassword()
     {
         return $this->Password;
@@ -78,8 +74,8 @@ class User{
         return 5;
     }
 
+    
     // Functions
-
     public function GetUserById($Id){
         $IdUser;
         $File = fopen($this->FileManager->getFileName(),"r+") or die("File Not Found !");
@@ -147,4 +143,6 @@ class User{
     }
 
 }
+
+
 

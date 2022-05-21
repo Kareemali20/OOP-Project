@@ -31,6 +31,10 @@ class FileManager{
         $this->Seperator = $Seperator;
     }
 
+    public function getFile(){
+        echo "The file name : ".$this->getFileName()." the seperator of the file : ".$this->getSeperator();
+    }
+
 
 
     // Functions    

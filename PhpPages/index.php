@@ -17,20 +17,19 @@
     <?php 
     include '../Classes/User.php';
     $User1 = new User("../TextFiles/Users.txt","~");
-    $User2 = $User1->ListAllUsers();
-    
+    $User1 = $User1->ListAllUsers();
 
     
-    for($i=0;$i<count($User2);$i++){
+    for($i=0;$i<count($User1);$i++){
         echo "<tr>"; 
-            echo "<td>".$User2[$i]->getId()."</td>";
-            echo "<td>".$User2[$i]->getName()."</td>";
-            echo "<td>".$User2[$i]->getEmail()."</td>";
-            echo "<td>".$User2[$i]->getPassword()."</td>";
-            echo "<td>".$User2[$i]->getAge()."</td>";
+            echo "<td>".$User1[$i]->getId()."</td>";
+            echo "<td>".$User1[$i]->getName()."</td>";
+            echo "<td>".$User1[$i]->getEmail()."</td>";
+            echo "<td>".$User1[$i]->getPassword()."</td>";
+            echo "<td>".$User1[$i]->getAge()."</td>";
             if($i!=0){
-                echo "<td> <a href = DeleteUser.php?Id=".$User2[$i]->getID()."> Delete </a>  </td>";
-                echo "<td> <a href = UpdateUser.php?Id=".$User2[$i]->getID()."> Update </a> </td>";
+                echo "<td> <a href = DeleteUser.php?Id=".$User1[$i]->getID()."> Delete </a>  </td>";
+                echo "<td> <a href = UpdateUser.php?Id=".$User1[$i]->getID()."> Update </a> </td>";
             }
         echo "</tr>";
     }
