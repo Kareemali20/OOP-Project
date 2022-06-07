@@ -1,7 +1,5 @@
 ID~Name~Email~Password~Age~Usertype
-1~Kareem Ali~Karim.abdlekhalek@msa.edu.eg~Kareem123~19~1
 2~Ahmed Tharwat~Ahmed.thrwat@msa.edu.eg~Ahmed123~20~1 
 3~Mohamed Ibrahim~Mohamed.ibrahim@msa.edu.eg~Mohamed123~20~1  
-4~Ammar Mahmoud~Ammar.mahmoud@msa.edu.eg~Ammar123~21~1
 5~Ayman Ezzat~Ayman.Ezzat@msa.edu.eg~Ayman123~38~2
 6~Moamen Zaher~Moamen.Zaher@msa.edu.eg~Moamen123~24~2

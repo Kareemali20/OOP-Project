@@ -1,7 +1,6 @@
 ID~Name~Role
-1~Kareem Ali~Student
 2~Ahmed Tharwat~Student
 3~Mohamed Ibrahim~Student
-4~Ammar Mahmoud~Student
 5~Ayman Ezzat~Staff
 6~Moamen Zaher~Staff
+7~Moamen Ezzat~Teacher

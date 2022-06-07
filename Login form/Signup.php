@@ -1,36 +1,61 @@
-<?php
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
 
-include_once '../Classes/User.php';
+    <div class="center">
+        <h1> Sign up </h1>
+        <form  action = "Signup2.php" method="post" >
+            <div  class="text_field">
+                <input type="text" name="Name" required>
+                <span>
 
-$UserObj = new User("../TextFiles/Users.txt","~");
-$NewUser = TRUE;
+                </span>
+                <label> Name </label>
+            </div>
 
-$UserObj->setName($_REQUEST['Name']);
-$UserObj->setId($UserObj->FileManager->getLastId()+1);
-$UserObj->setEmail($_REQUEST['Email']);
-$UserObj->setPassword($_REQUEST['Password']);
-$UserObj->setAge($_REQUEST['Age']);
+            <div class="text_field">
+                <input type="text" name="Email"  required>
+                <span>
 
-// Checking if the user is already signed up or not
-$File = fopen($UserObj->FileManager->getFileName(),"r+") or die("File Not Found !");
+                </span>
+                <label> Email </label>
+            </div>
+            <div class="text_field">
+                <input type="password" name="Password" required>
+                <span>
 
-    while(!feof($File)){
-        $CurrentLine = fgets($File);
-            
-        $LineArray = explode($UserObj->FileManager->getSeperator(),$CurrentLine);
-            
-        if($LineArray[2] == $UserObj->getEmail()){
-            $NewUser = FALSE;
-        }
+                </span>
+                <label> Password </label>
+            </div>
+            <div class="text_field">
+                <input type="age" name="Age" required>
+                <span>
 
-    }
-fclose($File);
+                </span>
+                <label> Age </label>
+            </div>
+            <?php
+            include_once 'Signup1.php';
+            include_once '../Classes/RegisterContext.php';
 
-if($NewUser){
-    $UserObj->StoreUser();
-    header("location:index.html");
-}
-else{
-    echo'<script> alert("This user is already signed up")</script>';
-    header("location:Signup.html");
-}
+            ValidateAndSignup();
+            if(isset($_POST['UT'])){
+                $_SESSION['UserType'] = $_POST['UT'];
+            }
+            ?>
+                        
+            <input type="submit" value="Sign up">
+            <div class="signup">
+                Already a member? <a href="index.html"> Sign in</a>
+            </div>
+        </form>
+    </div>    
+</body>
+</html>

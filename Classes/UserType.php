@@ -1,5 +1,8 @@
 <?php
 include_once 'FileManager.php';
+include_once 'Student.php';
+include_once 'Teacher.php';
+
 class UserType{
     private $ID;
     private $Name;
@@ -132,6 +135,17 @@ class UserType{
     public function DeleteUser($Id){
         $UserLine = $this->FileManager->GetLineWithId($Id);
         $this->FileManager->DeleteRecordInFile($UserLine);
+    }
+
+    public function getRegisterInfo($Type){
+        if( $Type == 1){
+            $S = new Student("../TextFiles/Student.txt","~");
+            return $S;
+        }
+        else if($Type == 2){
+            $T = new Teacher("../TextFiles/Teacher.txt","~");
+            return $T;
+        }
     }
 
 }

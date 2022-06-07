@@ -17,5 +17,6 @@ $NewRecord = $_SESSION['Id']."~".$_SESSION['Name']."~".$_SESSION['Email']."~".$_
 
 $UserObj->UpdateUser($OldRecord,$NewRecord);
 
+session_destroy();
 header("location:index.php");
 ?>
