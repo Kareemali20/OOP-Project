@@ -1,16 +1,19 @@
 <?php
-require 'FileManager.php';
-
+include_once 'FileManager.php';
 class UserType{
     private $ID;
     private $Name;
     private $UserType;
     public $FileManager;
 
+
+    // Constructor
     public function __construct(string $FileName,string $Seperator){
         $this->FileManager = new FileManager($FileName,$Seperator);
     }
 
+
+    // Setters and Getters
     public function getID()
     {
         return $this->ID;
@@ -49,13 +52,10 @@ class UserType{
         return 3;
     }
 
-
-
-
-
+    // Functions
     public function GetUserWithHisType($Id){
-        $IdUser;
         $File = fopen($this->FileManager->getFileName(),"r+") or die("File Not Found !");
+        $IdUser = "";
 
         while(!feof($File)){
             $CurrentLine = fgets($File);
@@ -63,10 +63,7 @@ class UserType{
             $LineArray = explode($this->FileManager->getSeperator(),$CurrentLine);
             
             if($LineArray[0] == $Id){
-                $F = new FileManager("../TextFiles/Usertype.txt","~");
-                $Line = $F->GetLineWithId($Id);
-        
-                $IdUser = new User("../TextFiles/Usertype.txt","~");
+                $IdUser = new UserType("../TextFiles/Usertype.txt","~");
                 
                 $IdUser->ID =$LineArray[0];
                 $IdUser->Name = $LineArray[1];
@@ -78,7 +75,32 @@ class UserType{
         }
         fclose($File);
 
-        return 0;
+        return ;
+    }
+
+    public function GetUserTypeWithID($Id){
+        $File = fopen($this->FileManager->getFileName(),"r+") or die("File Not Found !");
+        $IdUser = "";
+
+        while(!feof($File)){
+            $CurrentLine = fgets($File);
+            
+            $LineArray = explode($this->FileManager->getSeperator(),$CurrentLine);
+            
+            if($LineArray[0] == $Id){
+                $IdUser = new UserType("../TextFiles/Usertype.txt","~");
+                
+                $IdUser->ID =$LineArray[0];
+                $IdUser->Name = $LineArray[1];
+                $IdUser->UserType = $LineArray[2];
+
+                return $IdUser->UserType;
+            }
+
+        }
+        fclose($File);
+
+        return ;
     }
 
     public function ListAllUsers(){
@@ -89,7 +111,7 @@ class UserType{
 
             $CurrentLine = fgets($File);
             $LineArray = explode($this->FileManager->getSeperator(),$CurrentLine);
-            $UsersArray[$i] = new User("../TextFiles/Usertype.txt","~");
+            $UsersArray[$i] = new UserType("../TextFiles/Usertype.txt","~");
             $UsersArray[$i] = $this->GetUserWithHisType($LineArray[0]);
             
 
@@ -112,10 +134,10 @@ class UserType{
         $this->FileManager->DeleteRecordInFile($UserLine);
     }
 
-
-
 }
-$UserType = new UserType("../TextFiles/Usertype.txt","~");
-$UserType->FileManager->DrawTableFromFile();
 
-?>
+
+
+
+
+

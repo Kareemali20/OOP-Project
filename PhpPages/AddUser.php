@@ -6,6 +6,8 @@ $UserObj->setId($UserObj->FileManager->getLastId()+1);
 $UserObj->setEmail($_REQUEST['Email']);
 $UserObj->setPassword($_REQUEST['Password']);
 $UserObj->setAge($_REQUEST['Age']);
+$UserObj->setUserType($_REQUEST['UserT']);
+
 
 $UserObj->StoreUser();
 

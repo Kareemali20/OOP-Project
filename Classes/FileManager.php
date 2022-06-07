@@ -107,7 +107,6 @@ class FileManager{
     public function GetLineWithId($Id){
         $File = fopen($this->FileName,"r+") or die ("File Not Found");
         
-
         while(!feof($File)){
 
             $CurrentLine = fgets($File);

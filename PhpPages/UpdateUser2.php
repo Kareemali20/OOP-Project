@@ -11,7 +11,9 @@ $UserObj = new User("../TextFiles/Users.txt","~");
 
 
 $OldRecord = $UserObj->FileManager->GetLineWithId($_SESSION['Id']);
-$NewRecord = $_SESSION['Id']."~".$_SESSION['Name']."~".$_SESSION['Email']."~".$_SESSION['Password']."~".$_SESSION['Age']."\n";
+$UserObj = $UserObj->GetUserById($_SESSION['Id']);
+
+$NewRecord = $_SESSION['Id']."~".$_SESSION['Name']."~".$_SESSION['Email']."~".$_SESSION['Password']."~".$_SESSION['Age']."~".$UserObj->getUserType();
 
 $UserObj->UpdateUser($OldRecord,$NewRecord);
 
